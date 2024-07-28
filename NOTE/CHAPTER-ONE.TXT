@@ -1,0 +1,33 @@
+go run file-name.go -> compiles the code and then run it
+go build file-name.go -> compiles the code once and you can use it later
+
+PACKAGE
+go is package based
+each .go source file starts with a package declaration
+package main is special -> it defines a standalone executable program
+also function main is special 
+import tells the compiler what packages we is needed 
+
+FUNCTION
+func - a keyword for function declaration
+
+THERE IS A gofmt TOOL ?? what it does? Learn to use this guy? you can config vscode to run this on each control+S do this config
+
+OS PACKAGE
+os.Args
+
+FOR
+for initialization; condition; post {
+
+}
+in for loop you can use range keyword to describe something to iterate on
+this range produces two elements  -index -value at the index
+_, arg = range array -> this _ is a blank identifier
+
+BLANK IDENTIFIER
+we use _ when the syntax needs the declaration but the logic does not
+
+STRINGS PACKAGE
+string.Join()
+
+* slices will be printed in []
