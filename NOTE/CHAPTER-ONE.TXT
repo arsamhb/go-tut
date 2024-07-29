@@ -27,7 +27,17 @@ _, arg = range array -> this _ is a blank identifier
 BLANK IDENTIFIER
 we use _ when the syntax needs the declaration but the logic does not
 
+s := "" syntax is only allowed within a function
+
+
 STRINGS PACKAGE
-string.Join()
+string.Join() -> takes a list in first argument and concatenate them with the second argument
 
 * slices will be printed in []
+
+VERBS FOR Printf 
+%d  %X  %o  %b  %f  %g  %e  %t  %c  %s  %q  %v  %T  %%
+
+functions whose name ends with f use the formatting rules of fmt
+those whose name ends with ln formatting their arguments as if by %v, followed by a newline
+
