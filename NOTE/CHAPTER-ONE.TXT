@@ -41,3 +41,7 @@ VERBS FOR Printf
 functions whose name ends with f use the formatting rules of fmt
 those whose name ends with ln formatting their arguments as if by %v, followed by a newline
 
+BUFIO PACKAGE
+this package has .NewScanner() and if we pass os.Stdin as argument it can accept inputs from user
+
+len(something) -> tells us the length of something
