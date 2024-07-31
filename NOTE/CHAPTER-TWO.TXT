@@ -1,0 +1,80 @@
+**NAMES
+go is a CaseMatter language
+
+
+within scope of a function {
+    variable are bounded in here
+}
+
+out of scope of the function a variable is available for all of its package files (package level declaration)
+
+and Variable in PascalCase out of function is available every where
+
+consider short names in small scopes (local level variable) is much more better
+
+Use upper case for acronyms like scapeHTML
+
+
+
+**DECLARATIONS
+come in four major kind -> var / const / type / func
+
+each go file begins with a package declaration
+
+
+
+**VARIABLES
+
+var name type = expression
+
+type or expression can be omitted
+
+zer value for different types of variables
+    0           numbers
+    ""          strings
+    false       boolean
+    nil         slice, pointer, map, channel, function
+    zero value of all of their elements
+        array, slice
+
+There is no uninitialized variable in go language
+
+**SHORT VARIABLES DECLARATIONS
+
+:= it just can be used inside a function scope
+
+:= is declaration and = is assignment
+
+it also used for calling function that returns multiple values
+
+short variable declaration does not redeclare an existing value it just can do the assignment if the value is already exists
+
+BUT a short variable declaration must at least declare a new value
+
+**POINTERS
+
+a variable is a piece of storage containing a value
+a pointer value is the address of a variable
+with a pointer we can read or update the value of a variable INDIRECTLY
+
+x -> the variable   &x -> yields a pointer to the variable
+if x -> int => &x -> *int (it is the type of the value) it is called pointer to int if we call it p then we say p points to x or p contains the address of x
+and here the *p yields the value of x
+
+x := 1
+p := &x // p, of type *int, points to x
+fmt.Println(*p) // "1"
+*p = 2 // equivalent to x = 2
+fmt.Println(x) // "2"
+
+* aggregate type values are struct and array
+each component of aggregate type values has an address
+
+the zero value of a pointer is nil sp p != nil is true if p points to a variable
+pointers are comparable (non relevant I believe)
+
+its perfectly safe for a function to return the address of a local variable in it.
+
+v ~~~> p = &v ~~~> *p is an alias for v
+
+
