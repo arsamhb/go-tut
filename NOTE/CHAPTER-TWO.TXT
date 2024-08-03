@@ -29,7 +29,7 @@ var name type = expression
 
 type or expression can be omitted
 
-zer value for different types of variables
+zero value for different types of variables
     0           numbers
     ""          strings
     false       boolean
@@ -67,14 +67,51 @@ fmt.Println(*p) // "1"
 *p = 2 // equivalent to x = 2
 fmt.Println(x) // "2"
 
-* aggregate type values are struct and array
+* aggregate type values: -> struct and array
 each component of aggregate type values has an address
 
-the zero value of a pointer is nil sp p != nil is true if p points to a variable
+the zero value of a pointer is nil so p != nil is true if p points to a variable
 pointers are comparable (non relevant I believe)
 
 its perfectly safe for a function to return the address of a local variable in it.
 
 v ~~~> p = &v ~~~> *p is an alias for v
+
+func incr(p *int) int {
+    *p++
+    return *p
+}
+v := 1
+incr(&v)
+fmt.Println(incr(&v))
+
+The new Function
+
+p := new(int) -> p will be *T
+new(T) ~> T is the type of the variable we want to create
+new function returns the pointer to the value it made
+
+Lifetime of Variables
+
+lifetime of a package level variable is the entire execution of the program
+
+a variable lifetime ends when it becomes unreachable
+
+escaped value -> a value that comes out of a function
+
+Assignment
+
+v++ v-- 
+v = v * scale -> v *= scale
+
+Tuple Assignment
+
+You can assign several variables at once
+
+y, x = x, y
+
+f, err = os.Open("foo.txt) consider that values on the left hand side should be equal with returned values from function
+
+Type DECLARATIONS
 
 
