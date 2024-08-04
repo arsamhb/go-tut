@@ -85,7 +85,7 @@ v := 1
 incr(&v)
 fmt.Println(incr(&v))
 
-The new Function
+**The new Function
 
 p := new(int) -> p will be *T
 new(T) ~> T is the type of the variable we want to create
@@ -99,12 +99,12 @@ a variable lifetime ends when it becomes unreachable
 
 escaped value -> a value that comes out of a function
 
-Assignment
+**Assignment
 
 v++ v-- 
 v = v * scale -> v *= scale
 
-Tuple Assignment
+**Tuple Assignment
 
 You can assign several variables at once
 
@@ -112,6 +112,67 @@ y, x = x, y
 
 f, err = os.Open("foo.txt) consider that values on the left hand side should be equal with returned values from function
 
-Type DECLARATIONS
+**Type Declaration
 
+type declaration defines a new named type that has the same underlying type as an existing type.
+
+we do type declaration at package level 
+
+SYNTAX -> type name underlying-type
+
+For every type T there is a corresponding conversion operation T(x) that coverts value x to type T, this conversion is allowed if both have the same underlying type
+
+two values from two different named types cannot be compared directly you will take compile error
+
+there is something called type method
+
+
+**Package and Files
+
+in packages exported identifiers starts with an UpperCase letter.
+
+We put declaration of types constants and methods of a package in a separate and specific file file.
+
+Only one file in each package should have a package doc comment.
+
+Extensive doc comments are often place d in a file of their own, convent ion ally cal le d doc.go.
+
+
+
+**Import
+
+every package is identified by a unique string called its import path something like this -> "gopl.io/ch2/tempconv".
+
+
+**Package Initialization
+
+it begins by initializing package-level variables in the order.
+
+init functions are automatically executed when the program starts, in the order in which they are declared, the main package is the last to be initialized.
+
+precomputing the table of contents in init function is a useful programming technique
+
+
+
+*Scope
+
+scope is a compile-time property
+lifetime of variables is run-time property
+
+{ lexical blocks }  
+
+we something so called control flow labels -> break continue goto the scope of these it the entire enclosing function
+
+Wh en the compiler encounters a reference to a name, it looks for a declaration, starting with the inner most enclosing lexical block and working up to the universe block. If the compiler finds no declaration, it reports an ‘‘undeclared name’’ error. If a name is declared in both and outer block and an inner block, the inner declaration will be found first. In that case, the inner declaration is said to shadow or hide the outer one, making it inaccessible
+
+for/if/switch statements create implicit blocks in addition to their body block in if and switch there is block for condition and another for the body
+
+if f, err := os.Open(fname); err != nil {
+    return err
+} else {
+    // f and err are visible here too
+    f.ReadByte()
+    f.Close()
+}
+(NOT A GOOD PRACTICE THOUGH TRY TO DECLARE f OUT OF THE IF CONDITION BODY)
 
