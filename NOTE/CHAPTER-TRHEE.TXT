@@ -1,0 +1,76 @@
+    BASIC DATA TYPES
+
+Go's types fall into 4 main categories:
+    1- basic types 
+    2- aggregate types
+    3- reference types
+    4- interface types
+
+basic types include number string boolean
+aggregate types include arrays and structs
+reference type includes pointers slices maps functions and channels they are divers but they have ths common point that they all refer to a variable or state INDIRECTLY
+
+Integer
+Go has many numeric data types, several sizes of integer and floating-point and complex numbers. numeric types determines the size and sign of the value.
+
+There are four distinct sizes of signed integers int8 - int16 - int32 - int64 bits. and all of these have a uint version of unsigned value types.
+we also have int and uint which is the most efficient.
+
+there is a type rune is synonym for int32
+also the type byte is a synonym for uint8
+there is an unsigned integer type uintptr, this type width is not specified but it can hold all bits of a pointer value. we use it only on low level programming. 
+
+range of values of an n-bit number is from -2^n-1 to (2^n-1)-1 and for unsigned integers is from 0 to 2^n-1 for example the range of int8 is −128 to 127, where as the range of uint8 is 0 to 255.
+
+remainder % operator only applies on integers
+the behavior of / depends on operand types on floats returns float and on integer returns integer
+
+two values from the same basic type are comparable
+
+overflow occurs when the result of an mathematical operation exceed the maximum value that can be stored in that type. in this case the high-order bits discarded
+
+the overflow outcome differs in signed and unsigned values
+
+Bitwise Binary Operators
+bitwise operators perform operations on the individual bits of binary numbers
+
+bitwise AND &
+Compares each bit of two numbers. If both bits are 1, the result is 1. Otherwise, the result is 0.
+Example: 1010 & 1100 results in 1000.
+
+bitwise OR | 
+Compares each bit of two numbers. If at least one bit is 1, the result is 1. Otherwise, the result is 0.
+Example: 1010 | 1100 results in 1110.
+
+bitwise XOR ^
+Compares each bit of two numbers. If the bits are different, the result is 1. If they are the same, the result is 0.
+Example: 1010 ^ 1100 results in 0110.
+
+bit clear &^
+Compares each bit of two numbers. If the corresponding bit in the second number is 1, the result is 0. Otherwise, the result is the bit from the first number.
+Example: 1010 &^ 1100 results in 0010.
+
+left shift <<
+Shifts all bits in a number to the left by a specified number of positions, filling with zeros from the right.
+Example: 1010 << 1 results in 10100.
+
+right shift
+Shifts all bits in a number to the right by a specified number of positions, filling with zeros from the left.
+Example: 1010 >> 1 results in 0101.
+
+consider this point the len method returns a signed int (it can be negative)
+
+we tend to use int overall. not uint, even for those values that we know they cannot be negative
+
+There is a point here you cannot do math operations on two values with two different types and you need to convert them in a common type.
+
+in these conversions there are points to be considered
+float to int conversion discard any fractional part
+
+Floating-Point Numbers
+
+In go we have two floating type float32 and float64
+float32 provides six decimal digits pf precision and float64 provide 15 
+
+the verb for printing floating points is %g 
+
