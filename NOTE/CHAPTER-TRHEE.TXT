@@ -10,7 +10,8 @@ basic types include number string boolean
 aggregate types include arrays and structs
 reference type includes pointers slices maps functions and channels they are divers but they have ths common point that they all refer to a variable or state INDIRECTLY
 
-Integer
+**Integer
+
 Go has many numeric data types, several sizes of integer and floating-point and complex numbers. numeric types determines the size and sign of the value.
 
 There are four distinct sizes of signed integers int8 - int16 - int32 - int64 bits. and all of these have a uint version of unsigned value types.
@@ -65,12 +66,22 @@ we tend to use int overall. not uint, even for those values that we know they ca
 There is a point here you cannot do math operations on two values with two different types and you need to convert them in a common type.
 
 in these conversions there are points to be considered
-float to int conversion discard any fractional part
+float to int conversion discard any fractional part and truncating toward zero.
 
-Floating-Point Numbers
+there are adverbs like [1] or # for when we want to use user printf and verbs. you can use them with cheat sheet learning them is not necessary
+
+
+**Floating-Point Numbers
 
 In go we have two floating type float32 and float64
 float32 provides six decimal digits pf precision and float64 provide 15 
 
 the verb for printing floating points is %g 
 
+Use float64 for most purposes to ensure higher precision.
+
+Be mindful of the precision limits of float32 to avoid unexpected results.
+
+math.MaxFloat32, math.MaxFloat64
+
+The function math.IsNan tests whether its arguments is a not-a-number value.
