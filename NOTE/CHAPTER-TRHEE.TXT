@@ -85,3 +85,58 @@ Be mindful of the precision limits of float32 to avoid unexpected results.
 math.MaxFloat32, math.MaxFloat64
 
 The function math.IsNan tests whether its arguments is a not-a-number value.
+
+
+**Complex Numbers
+
+Provided in two sizes complex64 complex128
+real and imag built-in functions extract real and imaginary components of the complex number
+
+
+
+**Booleans
+
+the conditions in if and for are booleans
+
+&& has higher precedence than ||
+
+There is no implicit conversion from a boolean value to a numeric value
+
+
+**Strings
+
+len a built-in function that returns the number of bytes(not runes)
+s[i] -> gives the byte at i-th index of string s
+s[i:j] -> it is called substring operation that yields a new string from to j but not the j-th byte
+
+the + operator creates a new string by concatenating two strings
+
+consider that string values are immutable
+
+so you cannot do this s[0] = L -> compile error
+
+Immutability means that it is safe for two copies of a string to share the same underlying memory. making it cheap to copy strings of any length
+
+
+**String Literals
+
+a string value can be written as a string literal a sequence of the bytes enclosed in double quotes
+
+we can include Unicode code points in string literals
+
+things that starts with \ called escape sequences and we can use them inside string literals. we use \ to added arbitrary bytes
+
+we also can use hexadecimal escape for adding arbitrary bytes
+
+if we use `` then we will have a raw string literals that does not care about escape sequences
+
+Raw string literals are a convenient way to write regular expressions and HTML templates and JSON literals
+
+
+
+**Unicode
+
+US-ASCII: a system that uses 7bits to represent 128 characters 
+ASCII only supports english characters so we made unicode
+
+in the unicode all the characters from all the languages have a standard number assigned to them these numbers called unicode code point or in go terminology rune  rune / unicode code point 
