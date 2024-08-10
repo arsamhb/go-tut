@@ -140,3 +140,38 @@ US-ASCII: a system that uses 7bits to represent 128 characters
 ASCII only supports english characters so we made unicode
 
 in the unicode all the characters from all the languages have a standard number assigned to them these numbers called unicode code point or in go terminology rune  rune / unicode code point 
+
+The natural type pf unicode is int32, in go there is a synonym rune for this purpose
+
+we can bring a sequence of runes as a sequence of numbers in int32 which is called UTF-32
+
+
+## page 86 till 90 was not understood
+
+**UTF-8
+it uses between 1 and 4 bytes to represent each rune
+
+
+** Strings And Byte Slices
+
+bytes / strings / strconv / unicode -> four important package to work with strings
+
+strings.LastIndex()
+
+func Contains(s, substr string) bool
+func Count(s, sep string) int
+func Fields(s string) []string
+func HasPrefix(s, prefix string) bool
+func Index(s, sep string) int
+func Join(a []string, sep string) string
+
+func Contains(b, subslice []byte) bool
+func Count(s, sep []byte) int
+func Fields(s []byte) [][]byte
+func HasPrefix(s, prefix []byte) bool
+func Index(s, sep []byte) int
+func Join(s [][]byte, sep []byte) []byte
+
+bytes.Buffer
+this method provide an efficient way for manipulation of byte slices
+
