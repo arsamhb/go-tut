@@ -175,3 +175,51 @@ func Join(s [][]byte, sep []byte) []byte
 bytes.Buffer
 this method provide an efficient way for manipulation of byte slices
 
+
+
+** CONVERSION BETWEEN STRINGS AND NUMBERS
+
+strconv package converts integer to string
+
+using FormatInt and FormatUint converts a number to different base
+
+some verbs like %b %d %u and %x are handy in this process
+
+fmt.Scanf works for inputs mixed with string and numbers
+
+
+
+** CONSTANTS
+
+The underlying type of every constant is a basic type: boolean, string, number
+
+As with variables a sequence of constant can appear in one declaration
+
+Many computation on constant can be completely evaluated at compile time which leads to compiler optimization
+
+
+** CONSTANT GENERATOR iota (enum)
+
+
+In a const declaration the value of iota begins at zero and increments by one for each item in the sequence
+
+type Weekday int
+
+const (
+    Sunday Week = iota  -> Sunday = 0
+    Monday              -> Monday = 1
+    Tuesday             .
+    .                   .
+    .                   .
+    .
+)
+
+
+
+
+** UNTYPED CONSTANTS
+
+These constants have much greater numeric precision
+
+untyped boolean, untyped integer, untyped rune, untyped floating-point, untyped complex, untyped string
+
