@@ -1,0 +1,50 @@
+COMPOSITE FOUR
+
+COMPOSITE TYPES
+
+Arrays, slices, maps, structs
+
+Arrays, Structs -> Aggregate types -> their values are concatenations of other values in memory. Arrays are homogeneous but structs are heterogeneous. And Both are fixed size.
+
+
+** ARRAY
+
+An array is a fixed length sequence of zero or more elements of a particular type.
+
+var a [3]int -> an array of three integer
+len(a) -> returns the number of elements in the array
+by default elements of array are initially set to the zero value, and we can use array literal to initialize an array with values.
+
+var q [3]int = [3]int{1, 2, 3}
+
+In an array literal you can do this -> 
+q := [...]int{1,2,3}
+which means that the length of the array will be the same as the number of initializers.
+
+* the size of a array it part of its type so [2]int and [3]int are not the same 
+
+r := [...]int{99: -1} -> defines an array with one hundred elements, all zeros except for the last.
+
+if array's element types is comparable then the array type is comparable
+
+* when a function is called a copy of each argument value is assigned to the corresponding parameter variable, SO FUNCTION WILL RECEIVE A COPY NOT THE ORIGINAL, and considering this passing large array can be insufficient. also all the changes function make is only affects the copy not the original array * BUT WE CAN PASS THE POINTER TO THE ARRAY so that any modification the function makes to array elements will be visible to the caller.
+
+Using pointer to an array is efficient and allows the called function to mutate the caller's variable.
+
+
+
+** SLICES
+
+Slices represent variable length sequence whose elements all have the same type. 
+slice type -> []T -> it looks like an array type without size
+
+A slice has three components: pointer, length, capacity
+
+The pointer points to the first element of the array that is reachable through the slice
+
+The length is the number of slice elements
+
+The capacity is something???
+
+len, cap are two built-in functions that return length and capacity
+ 
