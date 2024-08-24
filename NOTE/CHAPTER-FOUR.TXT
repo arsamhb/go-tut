@@ -47,4 +47,28 @@ The length is the number of slice elements
 The capacity is something???
 
 len, cap are two built-in functions that return length and capacity
- 
+
+s[i:j] 0 <= i <= j <= cap(s) -> it create a new slice that refers to elements i through j-1  
+
+slicing beyond cap cause panic - but slicing beyond len extends the slice.
+
+* The expression x[m:n] yields a string if x is a string, or a []byte if x is a []byte
+
+* consider a slice has a pointer to an array so passing a slice to a function permits the function to modify the underlying array elements.
+
+THIS IS IMPORTANT
+s := []int{1,2,3,4,5,6}
+Consider the diffs between initializing slice and array. a slice literal looks like an array literalm a squence of values separated by commas and surrounded by braces BUT the size is NOT GIVEN. This implicitly creates an array variable of the right size(**so first an array is created**) and then yields a slice that points to it.
+
+Unlike arrays, slices are not comparable. so we cannot use ==. but we have bytes.Equal function for comparing two slices of bytes. but for comparing slices with other type we should do it ourselves.
+
+The only legal slice comparison is against nil.
+
+the zero value of slice type is nil The nul slice has length and capacity zero. BUT consider there are also non-nil slices of length and capacity zero. example -> []ion{}
+
+* SO PAY ATTENTION if you need to test a slice is empty or not use len(s) == 0
+DO NOT USE s == nil
+
+The make function creates a slice of a specified element type, length and capacity.
+
+make([]T, len, cap)
