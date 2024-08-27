@@ -58,17 +58,87 @@ slicing beyond cap cause panic - but slicing beyond len extends the slice.
 
 THIS IS IMPORTANT
 s := []int{1,2,3,4,5,6}
-Consider the diffs between initializing slice and array. a slice literal looks like an array literalm a squence of values separated by commas and surrounded by braces BUT the size is NOT GIVEN. This implicitly creates an array variable of the right size(**so first an array is created**) and then yields a slice that points to it.
+Consider the diffs between initializing slice and array. a slice literal looks like an array literal a sequence of values separated by commas and surrounded by braces BUT the size is NOT GIVEN. This implicitly creates an array variable of the right size(**so first an array is created**) and then yields a slice that points to it.
 
 Unlike arrays, slices are not comparable. so we cannot use ==. but we have bytes.Equal function for comparing two slices of bytes. but for comparing slices with other type we should do it ourselves.
 
 The only legal slice comparison is against nil.
 
-the zero value of slice type is nil The nul slice has length and capacity zero. BUT consider there are also non-nil slices of length and capacity zero. example -> []ion{}
+the zero value of slice type is nil The nil slice has length and capacity zero. BUT consider there are also non-nil slices of length and capacity zero. example -> []ion{}
 
-* SO PAY ATTENTION if you need to test a slice is empty or not use len(s) == 0
+* SO PAY ATTENTION if you need to test a slice is empty or not use 
+len(s) == 0
 DO NOT USE s == nil
 
 The make function creates a slice of a specified element type, length and capacity.
 
 make([]T, len, cap)
+
+append -> a built in a function that appends items to slices
+copy -> a built in function that copy values from one slice to another of the same type copy(destination, source), it return the number of elements it copied.
+
+due to many reasons, it's usual to assign the result of a call to append to the same slice variable whose value we passed to append.
+
+runes = append(runes, r) (lets call this updating slice variable)
+
+updating slice variable is crucial when we do something that may affect the pointer, len or cap of the underlying array
+
+slices are not PURE reference types but resemble an aggregate type.
+
+x = append(x, x...) -> appending the slice of x to x
+
+CONSIDER THIS -> SLICES ARE SLICE OF AN ARRAY SO ALL OF THE SLICES HAVE AN UNDERLYING ARRAY. AND SOME ACTIONS LIKE APPEND WILL CHANGE THE UNDERLYING ARRAY OR THE POINTER TO THE ARRAY OR... 
+
+SOME ACTIONS ON SLICE
+
+PUSH   -> stack = append(stack, v)
+TOP    -> top := stack[len(stack) - 1]
+POP    -> stack[:len(stack)-1]
+REMOVE -> func remove(slice []int, i int) []int {
+            copy(slice[i:], slice[i+1:])
+            return slice[:len(slice)-1]
+          }
+
+
+
+
+
+** MAPS
+
+The hash table, an unordered collection of key/value pairs. In go a map is a reference to a hash table. and the map type is written in map[K]V K and V are types of keys and values. all the key and values have the same type.
+
+make built-in function creates a map
+ages := make(map[string]int)
+also
+ages := map[string]int{
+  alice:31,
+  charlie:41,
+}
+OR
+ages := make(map[string]int)
+ages["alice"] = 31 ...
+
+also there is a delete built-in function that removes an item in the map delete(ages,"alice")
+
+consider a map element is not a variable so we cant take its pointer
+
+we can do this for iteration all over the map:
+for name, age := range ages {
+  ...
+}
+consider the order is random (or better to say different) here.
+
+so in order to do the iteration in a fixed sequence we can first extract all the keys and then sort them in a array then use that. also as we know that the count of the names its better to use an array since it would be much more efficient.
+
+names := make([]string, 0, len(ages))
+String.sort(names)
+// and then we use this list for accessing the values of the map
+
+The zero value for a map is nil, and it is a reference to NO hash table.
+
+a check to see whether that element exist or not
+if age, ok := ages["bob"]; !ok { /* ... */ }
+the ok is a boolean that reports whether the element was present or not.
+
+Maps cannot be compared to each other
+
